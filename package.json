@@ -1,0 +1,28 @@
+{
+  "name": "kopiku-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Kopiku App using Express and MySQL",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "kopiku",
+    "express",
+    "mysql",
+    "api",
+    "coffee"
+  ],
+  "author": "Yoga Asta",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
