@@ -4,27 +4,36 @@ const path = require('path');
 require('dotenv').config();
 
 const cors = require('cors');
-app.use(cors()); // penting di atas routes
+app.use(cors()); 
 
-// ✅ Tambahkan ini untuk serve file gambar statis dari folder public
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Import routes
+
 const coffeeRoutes = require('./Routes/coffeeRoutes');
 const foodRoutes = require('./Routes/foodRoutes');
 const nonCoffeeRoutes = require('./Routes/noncoffeeRoutes');
 const merchandiseRoutes = require('./Routes/merchandiseRoutes');
+const menuRoutes = require('./Routes/menuRoutes');
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Gunakan routes
+// Middleware untuk akses gambar
+app.use('/coffee_image', express.static('public/coffee_image'));
+app.use('/non_coffee_image', express.static('public/non_coffee_image'));
+app.use('/food_image', express.static('public/food_image'));
+app.use('/merchandise_image', express.static('public/merchandise_image'));
+
+
 app.use('/api', coffeeRoutes);
 app.use('/api', foodRoutes);
 app.use('/api', nonCoffeeRoutes);
 app.use('/api', merchandiseRoutes);
+app.use('/api', menuRoutes);
 
-// Jalankan server
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
